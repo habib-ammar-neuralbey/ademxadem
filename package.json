@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production npm run build && npm run serve",
-    "start:dev": "ts-node-dev -r dotenv/config src/server.tsx",
+    "start:dev": "ts-node-dev -r dotenv/config src/server.ts",
     "serve": "node -r dotenv/config dist/server.js",
     "build": "npm run clean && npm run build-ts",
     "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
@@ -37,7 +37,8 @@
     "rimraf": "^6.0.1",
     "sanitize-html": "^2.16.0",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
