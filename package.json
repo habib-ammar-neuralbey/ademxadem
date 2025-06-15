@@ -3,7 +3,19 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production npm run build && npm run serve",
+    "start:dev": "ts-node-dev -r dotenv/config src/server.tsx",
+    "serve": "node -r dotenv/config dist/server.js",
+    "build": "npm run clean && npm run build-ts",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch-node": "nodemon -r dotenv/config build/src/server.js",
+    "clean": "rimraf ./build/src",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "eslint": "eslint . --ext .js,.tsx",
+    "upgrade": "npm update --save-dev && npm update --save",
+    "seed": "ts-node-dev -r dotenv/config "
   },
   "keywords": [],
   "author": "",
@@ -22,6 +34,7 @@
     "multer": "^1.4.5-lts.2",
     "node-cron": "^4.0.5",
     "nodemailer": "^7.0.2",
+    "rimraf": "^6.0.1",
     "sanitize-html": "^2.16.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
